@@ -22,9 +22,9 @@ const MENU_ITEMS = [
 ];
 
 const SKILLS = [
-  { category: "LANGUAGES", items: ["Python", "Java", "C", "C++", "HTML", "CSS"] },
+  { category: "PROGRAMMING LANGUAGES", items: ["Python", "Java", "C", "C++", "HTML", "CSS"] },
   { category: "TOOLS & TECH", items: ["Data Structures & Algorithms", "Figma", "FlutterFlow", "OpenCV", "Flask", "SQLite", "Scikit-learn"] },
-  { category: "SOFT SKILLS", items: ["Analytical Thinking", "Team Collaboration", "Effective Communication", "Time Management", "Adaptability"] }
+  { category: "SOFT SKILLS", items: ["Analytical Thinking", "Team Collaboration", "Effective Communication", "Time Management", "Adaptability"] },
   { category: "SPOKEN LANGUAGES", items: ["Tamil", "English"] }
 ];
 
@@ -104,12 +104,12 @@ export default function App() {
   }, [currentScreen, selectedMenuItem]);
 
   return (
-    <div className="relative min-h-screen flex flex-col p-4 md:p-8 font-share-tech text-arcade-neon-cyan">
+    <div className="relative min-h-screen flex flex-col p-2 md:p-8 font-share-tech text-arcade-neon-cyan">
       <div className="scanlines"></div>
       <div className="crt-flicker"></div>
 
       {/* Top Arcade HUD */}
-      <header className="relative z-10 flex justify-between items-center mb-8 border-b-4 border-arcade-neon-pink pb-4 text-shadow-neon">
+      <header className="relative z-10 flex justify-between items-center mb-4 md:mb-8 border-b-4 border-arcade-neon-pink pb-4 text-shadow-neon">
         <div className="flex flex-col">
           <span className="text-arcade-neon-pink font-press-start text-xs md:text-sm">SCORE</span>
           <span className="font-press-start text-lg md:text-2xl">{score.toString().padStart(6, '0')}</span>
@@ -126,7 +126,7 @@ export default function App() {
       </header>
 
       {/* Main Content Area */}
-      <main className="relative z-10 flex-1 flex flex-col items-center justify-center border-4 border-arcade-neon-cyan rounded-lg p-4 md:p-8 box-shadow-neon bg-black/50 backdrop-blur-sm overflow-hidden">
+      <main className="relative z-10 flex-1 flex flex-col items-center justify-center border-2 md:border-4 border-arcade-neon-cyan rounded-lg p-3 md:p-8 box-shadow-neon bg-black/50 backdrop-blur-sm overflow-hidden">
 
         <AnimatePresence mode="wait">
           {currentScreen === screens.START && (
@@ -142,7 +142,7 @@ export default function App() {
                 <Gamepad2 size={64} className="animate-pulse" />
               </div>
 
-              <h1 className="font-press-start text-4xl md:text-6xl text-arcade-neon-pink glitch text-shadow-neon" data-text="SRINIDHI">
+              <h1 className="font-press-start text-3xl md:text-6xl text-arcade-neon-pink glitch text-shadow-neon" data-text="SRINIDHI">
                 SRINIDHI
               </h1>
 
@@ -150,12 +150,12 @@ export default function App() {
                 COMPUTER SCIENCE ENGINEERING STUDENT
               </p>
 
-              <div className="mt-12 opacity-80 hover:opacity-100 cursor-pointer" onClick={() => { setCurrentScreen(screens.MENU); setScore(s => s + 100); }}>
-                <p className="font-press-start text-arcade-neon-yellow text-xl md:text-2xl blinking-text">
-                  &gt; PRESS ENTER TO START &lt;
+              <div className="mt-8 md:mt-12 opacity-80 hover:opacity-100 cursor-pointer" onClick={() => { setCurrentScreen(screens.MENU); setScore(s => s + 100); }}>
+                <p className="font-press-start text-arcade-neon-yellow text-sm md:text-2xl blinking-text">
+                  &gt; TAP OR PRESS ENTER &lt;
                 </p>
-                <p className="mt-4 text-xs text-arcade-neon-pink/70 font-press-start">
-                  OR CLICK HERE
+                <p className="mt-4 text-[10px] text-arcade-neon-pink/70 font-press-start">
+                  TO INITIALIZE PORTFOLIO
                 </p>
               </div>
             </motion.div>
@@ -179,8 +179,8 @@ export default function App() {
                     <div
                       key={item.id}
                       className={`flex items-center gap-4 p-3 md:p-4 border-2 transition-all cursor-pointer ${isSelected
-                          ? 'border-arcade-neon-yellow bg-arcade-neon-yellow/10 text-arcade-neon-yellow scale-105'
-                          : 'border-transparent text-arcade-neon-cyan/70 hover:border-arcade-neon-cyan/50'
+                        ? 'border-arcade-neon-yellow bg-arcade-neon-yellow/10 text-arcade-neon-yellow scale-105'
+                        : 'border-transparent text-arcade-neon-cyan/70 hover:border-arcade-neon-cyan/50'
                         }`}
                       onMouseEnter={() => setSelectedMenuItem(index)}
                       onClick={() => {
@@ -197,7 +197,8 @@ export default function App() {
               </div>
 
               <div className="mt-4 text-center text-[10px] md:text-xs text-arcade-neon-pink font-press-start opacity-70">
-                USE ARROWS ⬆️⬇️ TO NAVIGATE<br /><br />ENTER TO SELECT
+                <span className="hidden md:inline">USE ARROWS ⬆️⬇️ | ENTER TO SELECT</span>
+                <span className="md:hidden">TAP ITEM TO SELECT</span>
               </div>
             </motion.div>
           )}
@@ -214,7 +215,7 @@ export default function App() {
                 <button onClick={() => setCurrentScreen(screens.MENU)} className="mr-4 hover:text-arcade-neon-pink transition-colors">
                   <ArrowLeft size={32} />
                 </button>
-                <h2 className="font-press-start text-2xl text-arcade-neon-pink text-shadow-neon">PLAYER PROFILE</h2>
+                <h2 className="font-press-start text-sm md:text-2xl text-arcade-neon-pink text-shadow-neon">PLAYER PROFILE</h2>
               </div>
 
               <div className="flex-1 overflow-y-auto pr-4 text-sm md:text-lg leading-relaxed flex flex-col gap-6 font-share-tech text-arcade-neon-cyan">
@@ -255,7 +256,8 @@ export default function App() {
               </div>
 
               <div className="mt-4 text-center text-[10px] text-arcade-neon-pink font-press-start opacity-70 border-t-2 border-arcade-neon-pink pt-4">
-                PRESS ESC TO RETURN
+                <span className="hidden md:inline">PRESS ESC TO RETURN</span>
+                <span className="md:hidden">USE TOP ARROW TO RETURN</span>
               </div>
             </motion.div>
           )}
@@ -272,7 +274,7 @@ export default function App() {
                 <button onClick={() => setCurrentScreen(screens.MENU)} className="mr-4 hover:text-arcade-neon-yellow transition-colors">
                   <ArrowLeft size={32} />
                 </button>
-                <h2 className="font-press-start text-xl md:text-2xl text-shadow-neon">POWER-UPS & SKILLS</h2>
+                <h2 className="font-press-start text-sm md:text-2xl text-shadow-neon">POWER-UPS & SKILLS</h2>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 p-2 overflow-y-auto">
@@ -293,7 +295,8 @@ export default function App() {
               </div>
 
               <div className="mt-auto pt-4 text-center text-[10px] text-arcade-neon-green font-press-start opacity-70">
-                PRESS ESC TO RETURN
+                <span className="hidden md:inline">PRESS ESC TO RETURN</span>
+                <span className="md:hidden">USE TOP ARROW TO RETURN</span>
               </div>
             </motion.div>
           )}
@@ -310,7 +313,7 @@ export default function App() {
                 <button onClick={() => setCurrentScreen(screens.MENU)} className="mr-4 hover:text-arcade-neon-pink transition-colors">
                   <ArrowLeft size={32} />
                 </button>
-                <h2 className="font-press-start text-xl md:text-2xl text-shadow-neon">HIGH SCORES (PROJECTS)</h2>
+                <h2 className="font-press-start text-sm md:text-2xl text-shadow-neon">HIGH SCORES (PROJECTS)</h2>
               </div>
 
               <div className="flex flex-col gap-4 overflow-y-auto pr-2 md:pr-4">
@@ -333,7 +336,8 @@ export default function App() {
               </div>
 
               <div className="mt-auto pt-4 text-center text-[10px] text-arcade-neon-cyan font-press-start opacity-70">
-                PRESS ESC TO RETURN
+                <span className="hidden md:inline">PRESS ESC TO RETURN</span>
+                <span className="md:hidden">USE TOP ARROW TO RETURN</span>
               </div>
             </motion.div>
           )}
@@ -350,7 +354,7 @@ export default function App() {
                 <button onClick={() => setCurrentScreen(screens.MENU)} className="mr-4 hover:text-arcade-neon-yellow transition-colors">
                   <ArrowLeft size={32} />
                 </button>
-                <h2 className="font-press-start text-xl md:text-2xl text-shadow-neon">UNLOCKABLES (CERTS)</h2>
+                <h2 className="font-press-start text-sm md:text-2xl text-shadow-neon">UNLOCKABLES (CERTS)</h2>
               </div>
 
               <div className="flex flex-col gap-3 overflow-y-auto pr-2">
@@ -363,7 +367,8 @@ export default function App() {
               </div>
 
               <div className="mt-auto pt-4 text-center text-[10px] text-arcade-neon-pink font-press-start opacity-70">
-                PRESS ESC TO RETURN
+                <span className="hidden md:inline">PRESS ESC TO RETURN</span>
+                <span className="md:hidden">USE TOP ARROW TO RETURN</span>
               </div>
             </motion.div>
           )}
@@ -380,7 +385,7 @@ export default function App() {
                 <button onClick={() => setCurrentScreen(screens.MENU)} className="mr-4 hover:text-arcade-neon-cyan transition-colors">
                   <ArrowLeft size={32} />
                 </button>
-                <h2 className="font-press-start text-xl md:text-2xl text-shadow-neon">TROPHIES (ACHIEVEMENTS)</h2>
+                <h2 className="font-press-start text-sm md:text-2xl text-shadow-neon">TROPHIES (ACHIEVEMENTS)</h2>
               </div>
 
               <div className="flex flex-col gap-4 overflow-y-auto pr-2">
@@ -393,7 +398,8 @@ export default function App() {
               </div>
 
               <div className="mt-auto pt-4 text-center text-[10px] text-arcade-neon-yellow font-press-start opacity-70">
-                PRESS ESC TO RETURN
+                <span className="hidden md:inline">PRESS ESC TO RETURN</span>
+                <span className="md:hidden">USE TOP ARROW TO RETURN</span>
               </div>
             </motion.div>
           )}
