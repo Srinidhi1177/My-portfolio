@@ -22,9 +22,10 @@ const MENU_ITEMS = [
 ];
 
 const SKILLS = [
-  { category: "LANGUAGES", items: ["Python", "Java", "C", "C++", "HTML", "CSS", "Tamil", "English"] },
+  { category: "LANGUAGES", items: ["Python", "Java", "C", "C++", "HTML", "CSS"] },
   { category: "TOOLS & TECH", items: ["Data Structures & Algorithms", "Figma", "FlutterFlow", "OpenCV", "Flask", "SQLite", "Scikit-learn"] },
   { category: "SOFT SKILLS", items: ["Analytical Thinking", "Team Collaboration", "Effective Communication", "Time Management", "Adaptability"] }
+  { category: "SPOKEN LANGUAGES", items: ["Tamil", "English"] }
 ];
 
 const PROJECTS = [
