@@ -35,6 +35,11 @@ const PROJECTS = [
     desc: "Real-time system using facial landmark detection to monitor eye movement."
   },
   {
+    title: "Expense Tracker",
+    tech: "Java, MySQL",
+    desc: "Smart Expense Tracker"
+  },
+  {
     title: "Cozy Planner",
     tech: "Flask, SQLite, Scikit-learn, JS",
     desc: "Full-stack NLP-based task manager to dynamically prioritize tasks."
