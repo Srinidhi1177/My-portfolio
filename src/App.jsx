@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Terminal, Gamepad2, User, Mail, Trophy, Cpu, ArrowLeft, Award, Medal, MapPin, Phone, GraduationCap } from 'lucide-react';
+import { Terminal, Gamepad2, User, Mail, Trophy, Cpu, ArrowLeft, Award, Medal, MapPin, Phone, GraduationCap, Briefcase, ExternalLink } from 'lucide-react';
 import './index.css';
 
 const screens = {
@@ -8,6 +8,7 @@ const screens = {
   MENU: 'MENU',
   ABOUT: 'ABOUT',
   SKILLS: 'SKILLS',
+  EXPERIENCE: 'EXPERIENCE',
   PROJECTS: 'PROJECTS',
   CERTIFICATIONS: 'CERTIFICATIONS',
   ACHIEVEMENTS: 'ACHIEVEMENTS',
@@ -16,65 +17,107 @@ const screens = {
 const MENU_ITEMS = [
   { id: screens.ABOUT, label: '1 PLAYER (PROFILE)', icon: User },
   { id: screens.SKILLS, label: 'POWER-UPS (SKILLS)', icon: Cpu },
+  { id: screens.EXPERIENCE, label: 'QUEST LOG (EXPERIENCE)', icon: Briefcase },
   { id: screens.PROJECTS, label: 'HIGH SCORES (PROJECTS)', icon: Trophy },
   { id: screens.CERTIFICATIONS, label: 'UNLOCKABLES (CERTS)', icon: Award },
   { id: screens.ACHIEVEMENTS, label: 'TROPHIES (AWARDS)', icon: Medal },
 ];
 
 const SKILLS = [
-  { category: "PROGRAMMING LANGUAGES", items: ["Python", "Java", "C", "C++", "HTML", "CSS"] },
-  { category: "TOOLS & TECH", items: ["Data Structures & Algorithms", "Figma", "FlutterFlow", "OpenCV", "Flask", "SQLite", "Scikit-learn"] },
-  { category: "SOFT SKILLS", items: ["Analytical Thinking", "Team Collaboration", "Effective Communication", "Time Management", "Adaptability"] },
-  { category: "SPOKEN LANGUAGES", items: ["Tamil", "English"] }
+  { category: "LANGUAGES", items: ["Python", "Java", "C++", "JavaScript", "HTML", "CSS"] },
+  { category: "FRAMEWORKS & TOOLS", items: ["Flask", "Flutter", "Figma", "FlutterFlow", "OpenCV"] },
+  { category: "DATABASES", items: ["MySQL", "SQLite"] },
+  { category: "CORE CONCEPTS", items: ["Machine Learning", "Computer Vision", "NLP", "RAG", "LLMs", "Data Structures", "Algorithms", "OOP", "Problem Solving"] },
+];
+
+const EXPERIENCE = [
+  {
+    role: "Web Development Intern",
+    company: "InAmigos Foundation (NGO)",
+    period: "2026 | Virtual",
+    points: ["Built portfolio showcasing projects & skills", "UI enhancements & performance updates for foundation website", "Research on web and AI tools"]
+  },
+  {
+    role: "Android Developer Virtual Intern",
+    company: "Google (via Eduskills)",
+    period: "Oct 2025 – Dec 2025",
+    points: ["Android app fundamentals and UI development"]
+  },
+  {
+    role: "AI/ML Virtual Intern",
+    company: "Google (via Eduskills)",
+    period: "Jul 2025 – Sep 2025",
+    points: ["Hands-on ML concepts and model building", "Real-world case studies and project simulations"]
+  },
+  {
+    role: "Social Intern – Digi-Permit Project",
+    company: "Digital Governance Initiative, KCT",
+    period: "May 2025",
+    points: ["Proposed digital permit system for real-time tracking", "Improved accessibility for rural users"]
+  },
+  {
+    role: "AI/ML Short Term Intern",
+    company: "Futura Robotics",
+    period: "Jul 2023",
+    points: ["Built flood identification system using ML", "Dataset curation and preprocessing"]
+  }
 ];
 
 const PROJECTS = [
   {
+    title: "Expense Tracker Application",
+    tech: "HTML, CSS, JS, Java (JDBC), MySQL",
+    desc: "Personal finance system with categorization, budgeting, and interactive data visualizations.",
+    period: "Apr 2026 – May 2026"
+  },
+  {
+    title: "Cafe-Style Cozy Planner",
+    tech: "Flask, SQLite, JavaScript, HTML, CSS",
+    desc: "Full-stack NLP-based task manager with dynamic prioritization and glassmorphism UI.",
+    period: "Feb 2026 – Mar 2026"
+  },
+  {
+    title: "LLM-Based RAG Chatbot",
+    tech: "Python, LLM, RAG",
+    desc: "Document-based QA system using Retrieval-Augmented Generation with embeddings.",
+    period: "Feb 2026"
+  },
+  {
     title: "Driver Fatigue Detection",
     tech: "Python, OpenCV",
-    desc: "Real-time system using facial landmark detection to monitor eye movement."
-  },
-  {
-    title: "Expense Tracker",
-    tech: "Java, MySQL",
-    desc: "Smart Expense Tracker"
-  },
-  {
-    title: "Cozy Planner",
-    tech: "Flask, SQLite, Scikit-learn, JS",
-    desc: "Full-stack NLP-based task manager to dynamically prioritize tasks."
+    desc: "Real-time fatigue detection using facial landmark detection and safety alerts.",
+    period: "Feb 2026"
   },
   {
     title: "Assistive Vision Technology",
     tech: "Python, Computer Vision",
-    desc: "AI system for visually impaired to detect objects and environments."
+    desc: "AI assistive system for visually impaired — object detection & environmental awareness.",
+    period: "Jan 2026"
   },
   {
-    title: "LLM RAG Chatbot",
-    tech: "Python, LLM",
-    desc: "Document-based question answering chatbot using RAG architecture."
-  },
-  {
-    title: "Siddha Platform Frontend",
+    title: "AI-Based Siddha Platform",
     tech: "HTML, CSS",
-    desc: "Healthcare UI aimed at digitizing traditional medicine."
+    desc: "Responsive healthcare UI for Siddha-based remedies platform.",
+    period: "Dec 2025 – Jan 2026"
   }
 ];
 
 const CERTIFICATIONS = [
-  "Google AI/ML Virtual Internship",
-  "Android Developer Virtual Internship",
-  "AI/ML Short-Term Internship",
-  "FlutterFlow Bootcamp",
-  "StudioX Android Development Workshop",
-  "Udemy HTML & CSS Course"
+  "Introduction to NLP – Infosys Springboard (Apr 2026)",
+  "Introduction to AI – Infosys Springboard (Apr 2026)",
+  "Introduction to Data Science – Infosys Springboard (Mar 2026)",
+  "FlutterFlow Bootcamp – Lets Upgrade (Aug 2025)",
+  "StudioX: Android Native Edition – KCT (2025–2026)",
+  "The Complete HTML Course – Udemy (Nov 2024)",
+  "AI/ML – Futura Robotics (Jul 2023)"
 ];
 
 const ACHIEVEMENTS = [
-  "Mahatma Gandhi Merit Scholarship Awardee",
-  "Participant – KCT Intra Ideathon 2024",
-  "Participant – VIT Tech Ideathon 2026",
-  "Paper presentation – SRM Institute of Science and Technology"
+  "Mahatma Gandhi Merit Scholarship Awardee for Academic Excellence",
+  "Team Lead – KCT Intra Ideathon 2024: Directed team in ideation & presentation",
+  "Participant – VIT Tech Ideathon 2026: Collaborative problem-solving",
+  "Paper Presentation – SRM Institute of Science and Technology",
+  "Hands-on Workshops in Android Development and UI/UX Design"
 ];
 
 export default function App() {
@@ -231,12 +274,11 @@ export default function App() {
                   <div className="flex-1">
                     <h3 className="font-press-start text-arcade-neon-yellow mb-2 text-[10px] md:text-sm">NAME: SRINIDHI SUBRAMANIAN</h3>
                     <h3 className="font-press-start text-arcade-neon-yellow mb-4 text-[10px] md:text-sm">CLASS: COMPUTER SCIENCE ENGINEER</h3>
-                    <p className="mb-2">
-                      Motivated Computer Science student with strong foundations in Python, Data Structures and problem solving.
-                      Currently exploring Artificial Intelligence, Machine Learning and Full Stack Development.
+                    <p className="mb-2 text-justify">
+                      Passionate Computer Science student focused on building practical AI and full-stack solutions, including computer vision systems and LLM-based chatbots. Eager to join a fast-paced team as a software or AI intern, where I can contribute, learn quickly, and turn ideas into working products.
                     </p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-4 text-arcade-neon-pink text-xs md:text-sm">
-                      <div className="flex items-center gap-2"><MapPin size={16} /> Pudukkottai, Tamil Nadu</div>
+                      <div className="flex items-center gap-2"><MapPin size={16} /> Coimbatore, Tamil Nadu</div>
                       <div className="flex items-center gap-2"><Phone size={16} /> 9500274020</div>
                     </div>
                   </div>
@@ -255,8 +297,16 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="flex gap-4 items-center p-4 border border-arcade-neon-yellow/30 text-arcade-neon-yellow justify-center cursor-pointer hover:bg-arcade-neon-yellow/10" onClick={() => window.location.href = "mailto:srinidhis1177@gmail.com"}>
-                  <Mail /> <span className="font-press-start text-[10px] md:text-xs">EMAIL: srinidhis1177@gmail.com</span>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="flex gap-4 items-center p-4 border border-arcade-neon-yellow/30 text-arcade-neon-yellow justify-center cursor-pointer hover:bg-arcade-neon-yellow/10" onClick={() => window.location.href = "mailto:srinidhis1177@gmail.com"}>
+                    <Mail size={18} /> <span className="font-press-start text-[8px] md:text-[10px]">srinidhis1177@gmail.com</span>
+                  </div>
+                  <div className="flex gap-4 items-center p-4 border border-arcade-neon-pink/30 text-arcade-neon-pink justify-center cursor-pointer hover:bg-arcade-neon-pink/10" onClick={() => window.open("https://github.com/Srinidhi1177", "_blank")}>
+                    <Terminal size={18} /> <span className="font-press-start text-[10px]">GITHUB</span>
+                  </div>
+                  <div className="flex gap-4 items-center p-4 border border-arcade-neon-cyan/30 text-arcade-neon-cyan justify-center cursor-pointer hover:bg-arcade-neon-cyan/10" onClick={() => window.open("https://www.linkedin.com/in/srinidhi-subramanian-26a45b284/", "_blank")}>
+                    <ExternalLink size={18} /> <span className="font-press-start text-[10px]">LINKEDIN</span>
+                  </div>
                 </div>
               </div>
 
@@ -306,6 +356,52 @@ export default function App() {
             </motion.div>
           )}
 
+          {currentScreen === screens.EXPERIENCE && (
+            <motion.div
+              key="experience"
+              initial={{ opacity: 0, x: -100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 100 }}
+              className="w-full max-w-4xl flex flex-col h-full"
+            >
+              <div className="flex items-center mb-6 border-b-2 border-arcade-neon-yellow pb-2 text-arcade-neon-yellow">
+                <button onClick={() => setCurrentScreen(screens.MENU)} className="mr-4 hover:text-arcade-neon-cyan transition-colors">
+                  <ArrowLeft size={32} />
+                </button>
+                <h2 className="font-press-start text-sm md:text-2xl text-shadow-neon">QUEST LOG (EXPERIENCE)</h2>
+              </div>
+
+              <div className="flex flex-col gap-4 overflow-y-auto pr-2 md:pr-4">
+                {EXPERIENCE.map((exp, idx) => (
+                  <div key={idx} className="border-l-4 border-arcade-neon-yellow bg-black p-4 md:p-6 hover:bg-arcade-neon-yellow/5 transition-colors group">
+                    <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-2 gap-1">
+                      <h3 className="font-press-start text-arcade-neon-pink text-[10px] md:text-sm group-hover:animate-pulse leading-normal">
+                        {exp.role}
+                      </h3>
+                      <span className="text-arcade-neon-yellow/70 text-[10px] font-share-tech md:text-right whitespace-nowrap">
+                        {exp.period}
+                      </span>
+                    </div>
+                    <p className="text-arcade-neon-cyan/80 text-xs md:text-sm mb-3 font-bold">{exp.company}</p>
+                    <ul className="text-arcade-neon-cyan/70 text-xs md:text-sm space-y-2">
+                      {exp.points.map((point, i) => (
+                        <li key={i} className="flex gap-2 items-start">
+                          <span className="text-arcade-neon-pink font-bold mt-0.5">&gt;</span>
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-auto pt-4 text-center text-[10px] text-arcade-neon-yellow font-press-start opacity-70">
+                <span className="hidden md:inline">PRESS ESC TO RETURN</span>
+                <span className="md:hidden">USE TOP ARROW TO RETURN</span>
+              </div>
+            </motion.div>
+          )}
+
           {currentScreen === screens.PROJECTS && (
             <motion.div
               key="projects"
@@ -329,9 +425,14 @@ export default function App() {
                         {idx + 1}. {project.title}
                       </h3>
                       <p className="text-arcade-neon-cyan/80 text-xs md:text-sm mb-2">{project.desc}</p>
-                      <p className="text-arcade-neon-yellow/70 text-[10px] md:text-xs flex items-center gap-2">
-                        <Terminal size={12} /> {project.tech}
-                      </p>
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-arcade-neon-yellow/70 text-[10px] md:text-xs mt-2">
+                        <p className="flex items-center gap-2">
+                          <Terminal size={12} /> {project.tech}
+                        </p>
+                        <p className="flex items-center gap-2 opacity-70">
+                          [ {project.period} ]
+                        </p>
+                      </div>
                     </div>
                     <div className="hidden md:flex text-arcade-neon-cyan/50 font-press-start text-xl h-full items-center">
                       {(10000 - (idx * 1500)).toString().padStart(6, '0')}
