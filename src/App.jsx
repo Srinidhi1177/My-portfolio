@@ -25,7 +25,7 @@ const MENU_ITEMS = [
 
 const SKILLS = [
   { category: "LANGUAGES", items: ["Python", "Java", "C++", "JavaScript", "HTML", "CSS"] },
-  { category: "FRAMEWORKS & TOOLS", items: ["Flask", "Flutter", "Figma", "FlutterFlow", "OpenCV"] },
+  { category: "FRAMEWORKS & TOOLS", items: ["Flask", "Flutter", "Figma", "FlutterFlow", "OpenCV","n8n(Workflow Automation)"] },
   { category: "DATABASES", items: ["MySQL", "SQLite"] },
   { category: "CORE CONCEPTS", items: ["Machine Learning", "Computer Vision", "NLP", "RAG", "LLMs", "Data Structures", "Algorithms", "OOP", "Problem Solving"] },
 ];
