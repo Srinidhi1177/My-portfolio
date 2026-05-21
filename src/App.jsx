@@ -103,6 +103,7 @@ const PROJECTS = [
 ];
 
 const CERTIFICATIONS = [
+  "Automate Everything with n8n - Lets Upgrade (May 2026)",
   "Introduction to NLP – Infosys Springboard (Apr 2026)",
   "Introduction to AI – Infosys Springboard (Apr 2026)",
   "Introduction to Data Science – Infosys Springboard (Mar 2026)",
